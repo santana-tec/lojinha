@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lojinha/src/auth/sign_up_screen.dart';
+import 'package:lojinha/src/base/base_screen.dart';
 import 'package:lojinha/src/components/custom_text_field.dart';
 import 'package:lojinha/src/config/custom_colors.dart';
 
@@ -21,7 +22,7 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //Nome do app
-                     Text.rich(
+                    Text.rich(
                       TextSpan(
                         style: const TextStyle(
                           fontSize: 40,
@@ -46,7 +47,7 @@ class SignInScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-      
+
                     // Categorias do app
                     SizedBox(
                       height: 30,
@@ -72,10 +73,11 @@ class SignInScreen extends StatelessWidget {
                   ],
                 ),
               ),
-      
+
               //Formulario de login
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(
@@ -86,13 +88,13 @@ class SignInScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     //Email
-                      const CustomTextField(
+                    const CustomTextField(
                       icon: Icons.email,
                       label: 'Email',
                     ),
-      
+
                     //Password
-                     const CustomTextField(
+                    const CustomTextField(
                       icon: Icons.lock,
                       label: 'Senha',
                       isSecret: true,
@@ -106,7 +108,13 @@ class SignInScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (c) {
+                              return  BaseScreen();
+                            }),
+                          );
+                        },
                         child: const Text(
                           'Entrar',
                           style: TextStyle(
@@ -120,7 +128,7 @@ class SignInScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
-                        child:  Text(
+                        child: Text(
                           'Esqueceu a senha?',
                           style: TextStyle(
                             color: CustomColors.customContrastColor,
@@ -157,9 +165,9 @@ class SignInScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-      
+
                     // Botao novo usuario
-      
+
                     SizedBox(
                       height: 50,
                       child: OutlinedButton(
@@ -173,10 +181,10 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder:(c) {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (c) {
                             return SignUpScreen();
-                          
-                          } ));
+                          }));
                         },
                         child: const Text(
                           'Criar Conta',
