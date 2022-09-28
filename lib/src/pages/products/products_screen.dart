@@ -5,7 +5,7 @@ import 'package:lojinha/src/pages/common_widgets/quantity_widget.dart';
 import 'package:lojinha/src/services/utils_services.dart';
 
 class ProductScreen extends StatefulWidget {
-  ProductScreen({
+  const ProductScreen({
     Key? key,
     required this.item,
   }) : super(key: key);
@@ -121,7 +121,8 @@ class _ProductScreenState extends State<ProductScreen> {
                           ),
                           onPressed: () {},
                           label: const Text('Comprar'),
-                          icon: Icon(Icons.shopping_cart_checkout_outlined),
+                          icon:
+                              const Icon(Icons.shopping_cart_checkout_outlined),
                         ),
                       ),
                     ],

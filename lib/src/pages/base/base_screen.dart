@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojinha/src/pages/cart/cart_tab.dart';
 
 import 'package:lojinha/src/pages/home/home_tab.dart';
 
@@ -24,9 +25,7 @@ class _BaseScreenState extends State<BaseScreen> {
           Container(
             color: Colors.blue,
           ),
-          Container(
-            color: Colors.orange,
-          ),
+          CartTab(),
           Container(
             color: Colors.purple,
           ),
