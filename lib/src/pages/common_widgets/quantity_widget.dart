@@ -5,12 +5,14 @@ class QuantityWidget extends StatelessWidget {
   final int value;
   final String suffixText;
   final Function(int quantity) result;
+  final bool isRemovable;
 
   const QuantityWidget({
     Key? key,
     required this.suffixText,
     required this.value,
     required this.result,
+    this.isRemovable = false,
   }) : super(key: key);
 
   @override
@@ -29,16 +31,18 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            icon: Icons.remove,
+            icon:
+                !isRemovable || value > 1 ? Icons.remove : Icons.delete_forever,
             onPressed: () {
-              if (value ==1) return;
+              if (value == 1 && !isRemovable) return;
 
               int resultCount = value - 1;
               result(resultCount);
             },
-            color: Colors.grey,
+            color: !isRemovable || value > 1 ? Colors.grey : Colors.red,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),

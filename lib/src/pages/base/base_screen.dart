@@ -25,7 +25,7 @@ class _BaseScreenState extends State<BaseScreen> {
           Container(
             color: Colors.blue,
           ),
-          CartTab(),
+          const CartTab(),
           Container(
             color: Colors.purple,
           ),

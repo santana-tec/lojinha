@@ -98,6 +98,6 @@ List<CartItemModel> cartItems = [
   ),
   CartItemModel(
     item: papaya,
-    quantity: 6,
+    quantity: 1,
   ),
 ];

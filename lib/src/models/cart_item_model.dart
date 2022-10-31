@@ -8,5 +8,9 @@ class CartItemModel{
     required this.item,
     required this.quantity,
   });
+
+  double totalPrice(){
+   return item.price * quantity;
+  }
   
 }
