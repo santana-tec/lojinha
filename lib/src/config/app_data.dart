@@ -1,5 +1,6 @@
 import 'package:lojinha/src/models/cart_item_model.dart';
 import 'package:lojinha/src/models/item_model.dart';
+import 'package:lojinha/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
   description:
@@ -65,15 +66,14 @@ List<ItemModel> items = [
   papaya,
 ];
 
- List<String> categorias = [
-    "Todos",
-    "Roupas",
-    "Eletrônicos",
-    "Esporte",
-    "Automotivo",
-    "Brinquedos",
-  ];
-
+List<String> categorias = [
+  "Todos",
+  "Roupas",
+  "Eletrônicos",
+  "Esporte",
+  "Automotivo",
+  "Brinquedos",
+];
 
 List<CartItemModel> cartItems = [
   CartItemModel(
@@ -101,3 +101,11 @@ List<CartItemModel> cartItems = [
     quantity: 1,
   ),
 ];
+
+UserModel user = UserModel(
+  phone: '99 9999 9999',
+  cpf: '222.222.222-22',
+  email: 'elder.santana@123',
+  name: 'Elder ',
+  password: '',
+);
