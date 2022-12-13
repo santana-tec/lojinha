@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojinha/src/pages/cart/cart_tab.dart';
 
 import 'package:lojinha/src/pages/home/home_tab.dart';
+import 'package:lojinha/src/pages/orders/orders_tab.dart';
 import 'package:lojinha/src/pages/profile/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -21,13 +22,11 @@ class _BaseScreenState extends State<BaseScreen> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: [
-          const HomeTab(),
-          Container(
-            color: Colors.blue,
-          ),
-          const CartTab(),
-          const ProfileTab(),
+        children: const [
+          HomeTab(),
+          OrdersTab(),
+          CartTab(),
+          ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

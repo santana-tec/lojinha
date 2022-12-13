@@ -1,5 +1,6 @@
 import 'package:lojinha/src/models/cart_item_model.dart';
 import 'package:lojinha/src/models/item_model.dart';
+import 'package:lojinha/src/models/order_models.dart';
 import 'package:lojinha/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
@@ -20,7 +21,7 @@ ItemModel grape = ItemModel(
       'A melhor uva da região e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida saudável.',
 );
 
-ItemModel guava = ItemModel(
+ItemModel goiaba = ItemModel(
   imgUrl: 'assets/fruits/guava.png',
   itemName: 'Goiaba',
   price: 11.5,
@@ -60,7 +61,7 @@ ItemModel papaya = ItemModel(
 List<ItemModel> items = [
   apple,
   grape,
-  guava,
+  goiaba,
   kiwi,
   mango,
   papaya,
@@ -85,7 +86,7 @@ List<CartItemModel> cartItems = [
     quantity: 2,
   ),
   CartItemModel(
-    item: guava,
+    item: goiaba,
     quantity: 3,
   ),
   CartItemModel(
@@ -109,3 +110,48 @@ UserModel user = UserModel(
   name: 'Elder ',
   password: '',
 );
+
+List<OrderModel> orders = [
+  //Pedido 01
+  OrderModel(
+    copyAndPaste: 'a12dasdas2321',
+    createdDateTime: DateTime.parse(
+      '2021-06-08 10:00:10.458',
+    ),
+    id: 'PD1234',
+    overdueDateTime: DateTime.parse(
+      '2021-06-08 11:00:10.458',
+    ),
+    status: 'pending_payment',
+    total: 11.0,
+    items: [
+      CartItemModel(
+        item: apple,
+        quantity: 2,
+      ),
+      CartItemModel(
+        item: mango,
+        quantity: 2,
+      ),
+    ],
+  ),
+
+  OrderModel(
+    copyAndPaste: 'a12dasdas2321',
+    createdDateTime: DateTime.parse(
+      '2021-06-08 10:00:10.458',
+    ),
+    id: 'PD1243',
+    overdueDateTime: DateTime.parse(
+      '2021-06-08 11:00:10.458',
+    ),
+    status: 'refunded',
+    total: 11.0,
+    items: [
+      CartItemModel(
+        item: goiaba,
+        quantity: 2,
+      ),
+    ],
+  ),
+];
