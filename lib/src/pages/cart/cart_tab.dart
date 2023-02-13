@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojinha/src/config/custom_colors.dart';
 import 'package:lojinha/src/models/cart_item_model.dart';
 import 'package:lojinha/src/pages/cart/components/cart_tile.dart';
+import 'package:lojinha/src/pages/common_widgets/payment_dialog.dart';
 import 'package:lojinha/src/services/utils_services.dart';
 import 'package:lojinha/src/config/app_data.dart' as appData;
 
@@ -94,7 +95,14 @@ class _CartTabState extends State<CartTab> {
                     ),
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
-                      print(result);
+                      if (result ?? false) {
+                        showDialog(
+                          context: context,
+                          builder: (_) {
+                            return PaymentDialog(order: appData.orders.first);
+                          },
+                        );
+                      }
                     },
                     child: const Text(
                       'Finalizar Pedido',

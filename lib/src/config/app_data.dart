@@ -116,11 +116,11 @@ List<OrderModel> orders = [
   OrderModel(
     copyAndPaste: 'a12dasdas2321',
     createdDateTime: DateTime.parse(
-      '2021-06-08 10:00:10.458',
+      '2023-06-08 10:00:10.458',
     ),
     id: 'PD1234',
     overdueDateTime: DateTime.parse(
-      '2021-06-08 11:00:10.458',
+      '2023-06-08 11:00:10.458',
     ),
     status: 'pending_payment',
     total: 11.0,
@@ -139,13 +139,13 @@ List<OrderModel> orders = [
   OrderModel(
     copyAndPaste: 'a12dasdas2321',
     createdDateTime: DateTime.parse(
-      '2021-06-08 10:00:10.458',
+      '2023-06-08 10:00:10.458',
     ),
     id: 'PD1243',
     overdueDateTime: DateTime.parse(
-      '2021-06-08 11:00:10.458',
+      '2023-06-08 11:00:10.458',
     ),
-    status: 'refunded',
+    status: 'paid',
     total: 11.0,
     items: [
       CartItemModel(

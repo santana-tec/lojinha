@@ -131,8 +131,8 @@ class _HomeTabState extends State<HomeTab> {
           child: GridView.builder(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             physics: const BouncingScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: MediaQuery.of(context).size.width > 800 ? 3 : 2,
               childAspectRatio: 9 / 11.5,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
