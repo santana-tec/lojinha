@@ -1,3 +1,5 @@
+import 'package:add_to_cart_animation/add_to_cart_animation.dart';
+import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,14 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   String selectedCategory = "Todos";
+
+  GlobalKey<CartIconKey> globalKeyCartItems = GlobalKey<CartIconKey>();
+
+  late Function(GlobalKey) runAddToCardAnimation;
+
+  void itemSelectedCartAnimations(GlobalKey gkImage) {
+    runAddToCardAnimation(gkImage);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,89 +73,100 @@ class _HomeTabState extends State<HomeTab> {
                     fontSize: 12,
                   ),
                 ),
-                child: Icon(
-                  Icons.shopping_cart,
-                  color: CustomColors.customSawtchColor,
+                child: AddToCartIcon(
+                  key: globalKeyCartItems,
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: CustomColors.customSawtchColor,
+                  ),
                 ),
               ),
             ),
           ),
         ],
       ),
-      body: Column(children: [
-        // campo de pesquisa
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 10,
-          ),
-          child: TextFormField(
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              isDense: true,
-              hintText: "Pesquisar",
-              hintStyle: TextStyle(
-                color: Colors.grey.shade400,
-                fontSize: 14,
-              ),
-              prefixIcon: Icon(
-                Icons.search,
-                color: CustomColors.customContrastColor,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(60),
-                borderSide: BorderSide.none,
+      body: AddToCartAnimation(
+        gkCart: globalKeyCartItems,
+        previewDuration: const Duration(milliseconds: 100),
+        previewCurve: Curves.ease,
+        receiveCreateAddToCardAnimationMethod: (addToCardAnimationMethod) {
+          runAddToCardAnimation = addToCardAnimationMethod;
+        },
+        child: Column(children: [
+          // campo de pesquisa
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: TextFormField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                isDense: true,
+                hintText: "Pesquisar",
+                hintStyle: TextStyle(
+                  color: Colors.grey.shade400,
+                  fontSize: 14,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: CustomColors.customContrastColor,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(60),
+                  borderSide: BorderSide.none,
+                ),
               ),
             ),
           ),
-        ),
 
-        // categorias
+          // categorias
 
-        Container(
-          padding: const EdgeInsets.only(left: 25),
-          height: 40,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) {
-              return CategoryTile(
-                onPressed: () {
-                  setState(() {
-                    selectedCategory = appData.categorias[index];
-                  });
-                },
-                category: appData.categorias[index],
-                isSelected: selectedCategory == appData.categorias[index],
-              );
-            },
-            separatorBuilder: (_, index) => const SizedBox(
-              width: 10,
+          Container(
+            padding: const EdgeInsets.only(left: 25),
+            height: 40,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) {
+                return CategoryTile(
+                  onPressed: () {
+                    setState(() {
+                      selectedCategory = appData.categorias[index];
+                    });
+                  },
+                  category: appData.categorias[index],
+                  isSelected: selectedCategory == appData.categorias[index],
+                );
+              },
+              separatorBuilder: (_, index) => const SizedBox(
+                width: 10,
+              ),
+              itemCount: appData.categorias.length,
             ),
-            itemCount: appData.categorias.length,
           ),
-        ),
 
-        // grid
-        Expanded(
-          child: GridView.builder(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-            physics: const BouncingScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: MediaQuery.of(context).size.width > 800 ? 3 : 2,
-              childAspectRatio: 9 / 11.5,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+          // grid
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width > 800 ? 3 : 2,
+                childAspectRatio: 9 / 11.5,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemCount: appData.items.length,
+              itemBuilder: (_, index) {
+                return ItemTile(
+                    item: appData.items[index],
+                    cartAnimationMethod: itemSelectedCartAnimations);
+              },
             ),
-            itemCount: appData.items.length,
-            itemBuilder: (_, index) {
-              return ItemTile(
-                item: appData.items[index],
-              );
-            },
-          ),
-        )
-      ]),
+          )
+        ]),
+      ),
     );
   }
 }
