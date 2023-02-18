@@ -4,6 +4,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 import 'package:lojinha/src/config/custom_colors.dart';
+import 'package:lojinha/src/pages/common_widgets/app_name_widget.dart';
 import 'package:lojinha/src/pages/home/components/category_tile.dart';
 import 'package:lojinha/src/config/app_data.dart' as appData;
 import 'package:lojinha/src/pages/home/components/item_tile.dart';
@@ -33,29 +34,7 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text.rich(
-          TextSpan(
-            style: const TextStyle(
-              fontSize: 30,
-            ),
-            children: [
-              TextSpan(
-                text: "Sua",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: CustomColors.customSawtchColor,
-                ),
-              ),
-              TextSpan(
-                text: "Loja",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: CustomColors.customContrastColor,
-                ),
-              ),
-            ],
-          ),
-        ),
+        title: const AppNameWidget(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(
@@ -170,3 +149,5 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 }
+
+
