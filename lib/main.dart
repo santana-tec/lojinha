@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'package:lojinha/src/pages/auth/sing_in_screen.dart';
+import 'package:lojinha/src/pages_routes/app_pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,14 +13,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Lojinha',
       theme: ThemeData(
         primarySwatch: Colors.green,
         scaffoldBackgroundColor: Colors.white.withAlpha(190),
       ),
-      home: const SignInScreen(),
+      initialRoute: PageRoutes.splashRoute,
+      getPages: AppPages.pages,
     );
   }
 }

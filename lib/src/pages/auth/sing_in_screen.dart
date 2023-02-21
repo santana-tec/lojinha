@@ -1,10 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lojinha/src/pages/common_widgets/app_name_widget.dart';
 
 import 'package:lojinha/src/pages/common_widgets/custom_text_field.dart';
 import 'package:lojinha/src/config/custom_colors.dart';
-import 'package:lojinha/src/pages/auth/sign_up_screen.dart';
-import 'package:lojinha/src/pages/base/base_screen.dart';
+import 'package:lojinha/src/pages_routes/app_pages.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -23,30 +24,9 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //Nome do app
-                    Text.rich(
-                      TextSpan(
-                        style: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        children: [
-                          const TextSpan(
-                            text: "Sua",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          TextSpan(
-                            text: "Loja",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: CustomColors.customContrastColor,
-                            ),
-                          ),
-                        ],
-                      ),
+                    const AppNameWidget(
+                      greenTitileColor: Colors.white,
+                      textSize: 40,
                     ),
 
                     // Categorias do app
@@ -110,11 +90,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (c) {
-                              return  const BaseScreen();
-                            }),
-                          );
+                          Get.offNamed(PageRoutes.baseRoute);
                         },
                         child: const Text(
                           'Entrar',
@@ -182,10 +158,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (c) {
-                            return SignUpScreen();
-                          }));
+                          Get.toNamed(PageRoutes.signUpRoute);
                         },
                         child: const Text(
                           'Criar Conta',

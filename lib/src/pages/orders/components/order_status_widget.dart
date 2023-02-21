@@ -86,7 +86,7 @@ class OrderStatusWidget extends StatelessWidget {
 }
 
 class _CustomDvider extends StatelessWidget {
-  const _CustomDvider({super.key});
+  const _CustomDvider();
 
   @override
   Widget build(BuildContext context) {
@@ -102,17 +102,12 @@ class _CustomDvider extends StatelessWidget {
   }
 }
 
-
-
-
-
 class _StatusDot extends StatelessWidget {
   final bool isActive;
   final String title;
   final Color? backgroundColor;
 
   const _StatusDot({
-    super.key,
     required this.isActive,
     required this.title,
     this.backgroundColor,

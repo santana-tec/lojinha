@@ -32,7 +32,7 @@ class OrderTile extends StatelessWidget {
               Text('Pedido: ${order.id}'),
               Text(
                 utilsServices.formatDateTime(order.createdDateTime),
-                style: TextStyle(fontSize: 12, color: Colors.black),
+                style: const TextStyle(fontSize: 12, color: Colors.black),
               ),
             ],
           ),
@@ -101,12 +101,12 @@ class OrderTile extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                 showDialog(
+                  showDialog(
                     context: context,
                     builder: (_) {
                       return PaymentDialog(order: order);
                     },
-                  ); 
+                  );
                 },
                 icon: Image.asset(
                   'assets/app_images/pix.png',
